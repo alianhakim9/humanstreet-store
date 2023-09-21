@@ -1,0 +1,13 @@
+version: '3.1'
+services:
+  mongo:
+    image: mongo
+    container_name: humanstreet-mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: humanstreet
+      MONGO_INITDB_ROOT_PASSWORD: humanstreet.co
+      MONGO_INITDB_DATABASE: humanstreet-storedb
+      MONGO_DB_URL: mongodb://localhost:27017/humanstreet-storedb
+    ports:
+      - 27017:27017
