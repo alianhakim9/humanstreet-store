@@ -1,13 +1,13 @@
-version: '3.1'
+version: '3.5'
 services:
-  mongo:
-    image: mongo
-    container_name: humanstreet-mongo
+  mongodb:
+    image: mongo:7.0
+    container_name: humanstreet-mongodb
+    ports:
+      - "27017:27017"
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: humanstreet
-      MONGO_INITDB_ROOT_PASSWORD: humanstreet.co
-      MONGO_INITDB_DATABASE: humanstreet-storedb
-      MONGO_DB_URL: mongodb://localhost:27017/humanstreet-storedb
-    ports:
-      - 27017:27017
+      MONGO_INITDB_ROOT_PASSWORD: humanstreet
+    volumes:
+      - ./.docker/mongo-init-scripts:/docker-entrypoint-initdb.d
